@@ -12,16 +12,16 @@ import java.sql.SQLException;
  *
  * @author Usuario
  */
-public class DatabaseSingleton {
+public class Singleton {
 
-    private static DatabaseSingleton instance;
+    private static Singleton instance;
     private Connection connection;
 
-    private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/bd_controlhotel";
+    private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/databasehotel";
     private static final String USER = "root";
     private static final String PASSWORD = "";
 
-    private DatabaseSingleton() {
+    private Singleton() {
         try {
             connection = DriverManager.getConnection(DATABASE_URL, USER, PASSWORD);
         } catch (SQLException e) {
@@ -29,14 +29,14 @@ public class DatabaseSingleton {
         }
     }
 
-    public static DatabaseSingleton getInstance() {
+    public static Singleton getInstance() {
         if (instance == null) {
-            instance = new DatabaseSingleton();
+            instance = new Singleton();
         }
         return instance;
     }
 
-    public Connection getConnection() {
+    public Connection getconnection() {
         return connection;
     }
 

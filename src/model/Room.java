@@ -10,14 +10,18 @@ package model;
  */
 public class Room {
 
-    private int id;
+    private long id;
     private int roomNumber;
     private String typeOfRoom;
     private double priceNight;
     private String disponibility;
     private String detailsAmenities;
 
-    public Room(int id, int roomNumber, String typeOfRoom, double priceNight, String disponibility, String detailsAmenities) {
+    public Room(long id) {
+        this.id = id;
+    }
+
+    public Room(long id, int roomNumber, String typeOfRoom, double priceNight, String disponibility, String detailsAmenities) {
         this.id = id;
         this.roomNumber = roomNumber;
         this.typeOfRoom = typeOfRoom;
@@ -26,11 +30,11 @@ public class Room {
         this.detailsAmenities = detailsAmenities;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -73,4 +77,5 @@ public class Room {
     public void setDetailsAmenities(String detailsAmenities) {
         this.detailsAmenities = detailsAmenities;
     }
+
 }

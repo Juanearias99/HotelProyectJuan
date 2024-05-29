@@ -14,10 +14,10 @@ import java.sql.SQLException;
  */
 public class MySQLConnection {
     // Librería de MySQL
-
-    private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-
     // Nombre de la base de datos
+    
+    private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
+    
     private static final String DATABASE = "databasehotel";
 
     // Host
@@ -57,5 +57,3 @@ public class MySQLConnection {
         return conn;
     }
 }
-
-

@@ -10,28 +10,33 @@ package model;
  */
 public class Hotel {
 
-    private int id;
+    private long code;
     private String name;
     private String adress;
-    private String classification;
-    private String amenities;
-    private String images;
+    private String city;
+    private int classification;
+    private int amenities;
 
-    public Hotel(int id, String name, String adress, String classification, String amenities, String images) {
-        this.id = id;
+    public Hotel(long code) {
+        this.code = code;
+    }
+
+    public Hotel(long code, String name, String adress, String city, int classification, int amenities) {
+        this.code = code;
         this.name = name;
         this.adress = adress;
+        this.city = city;
         this.classification = classification;
         this.amenities = amenities;
-        this.images = images;
+
     }
 
-    public int getId() {
-        return id;
+    public long getCode() {
+        return code;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setCode(long code) {
+        this.code = code;
     }
 
     public String getName() {
@@ -50,28 +55,27 @@ public class Hotel {
         this.adress = adress;
     }
 
-    public String getClassification() {
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public int getClassification() {
         return classification;
     }
 
-    public void setClassification(String classification) {
+    public void setClassification(int classification) {
         this.classification = classification;
     }
 
-    public String getAmenities() {
+    public int getAmenities() {
         return amenities;
     }
 
-    public void setAmenities(String amenities) {
+    public void setAmenities(int amenities) {
         this.amenities = amenities;
     }
-
-    public String getImages() {
-        return images;
-    }
-
-    public void setImages(String images) {
-        this.images = images;
-    }
-
 }

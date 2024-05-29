@@ -4,13 +4,15 @@
  */
 package model;
 
+import java.util.Date;
+
 /**
  *
  * @author Lenovo
  */
 public class Booking {
 
-    private int id;
+    private long id;
     private User user;
     private Hotel hotel;
     private Room room;
@@ -19,7 +21,15 @@ public class Booking {
     private String reservationStatus;
     private double totalPrice;
 
-    public Booking(int id, User user, Hotel hotel, Room room, String dateIn, String dateOut, String reservationStatus, double totalPrice) {
+    public Booking() {
+
+    }
+
+    public Booking(long id) {
+        this.id = id;
+    }
+
+    public Booking(long id, User user, Hotel hotel, Room room, String dateIn, String dateOut, String reservationStatus, double totalPrice) {
         this.id = id;
         this.user = user;
         this.hotel = hotel;
@@ -30,11 +40,11 @@ public class Booking {
         this.totalPrice = totalPrice;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -94,5 +104,4 @@ public class Booking {
         this.totalPrice = totalPrice;
     }
 
-  
 }
