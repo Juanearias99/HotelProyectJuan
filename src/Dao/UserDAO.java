@@ -147,7 +147,6 @@ public class UserDAO {
             statement.setString(5, user.getRol());
             statement.setLong(6, user.getId());
             statement.executeUpdate();
-
         } catch (SQLException e) {
             System.out.println("Error" + e);
         }

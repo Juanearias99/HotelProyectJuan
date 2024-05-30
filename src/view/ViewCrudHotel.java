@@ -9,6 +9,7 @@ import exception.CodeExistingException;
 import javax.swing.table.DefaultTableModel;
 import model.Hotel;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -272,13 +273,13 @@ public class ViewCrudHotel extends javax.swing.JFrame {
 
         jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6"
             }
         ));
         jScrollPane1.setViewportView(jTable);
@@ -347,10 +348,11 @@ public class ViewCrudHotel extends javax.swing.JFrame {
         int amenities = Integer.parseInt(txtAmenities.getText());
         long code = Long.parseLong(txtCode.getText());
         Hotel hotel = new Hotel(code, name, adress, city, classification, amenities);
-
+        JOptionPane.showMessageDialog(null, "El hotel se ha modificado ");
+        clearFields();
         try {
             hotelService.updateHotel(hotel);
-            JOptionPane.showMessageDialog(null, "Se ha modificado el hotel");
+
         } catch (SQLException ex) {
         } catch (CodeExistingException ex) {
 
@@ -399,8 +401,10 @@ public class ViewCrudHotel extends javax.swing.JFrame {
             Hotel hotel = hotelService.readHotel(code);
             if (hotel != null) {
                 txtName.setText(hotel.getName());
+                txtAdress.setText(hotel.getAdress());
+                txtCity.setText(hotel.getCity());
                 JOptionPane.showMessageDialog(null, "Se ha encontrado el hotel");
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "No se pudo encontrar");
             }
 

@@ -179,7 +179,7 @@ public class ViewLogin extends javax.swing.JFrame {
             if (validateFields()) {
                 User user = dao.authenticUser(txtEmail.getText(), jPassword.getText());
                 if (user != null) {
-                    if (user.getRol().equals("admin")) {
+                    if (user.getRol().equals("Administrador")) {
                         this.setVisible(false);
                         ViewHotelAvailable hotelAvailable = new ViewHotelAvailable(user);
                         hotelAvailable.setVisible(true);

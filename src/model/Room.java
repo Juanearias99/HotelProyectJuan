@@ -16,18 +16,20 @@ public class Room {
     private double priceNight;
     private String disponibility;
     private String detailsAmenities;
+    private Hotel hotel;
 
     public Room(long id) {
         this.id = id;
     }
 
-    public Room(long id, int roomNumber, String typeOfRoom, double priceNight, String disponibility, String detailsAmenities) {
+    public Room(long id, int roomNumber, String typeOfRoom, double priceNight, String disponibility, String detailsAmenities, Hotel hotel) {
         this.id = id;
         this.roomNumber = roomNumber;
         this.typeOfRoom = typeOfRoom;
         this.priceNight = priceNight;
         this.disponibility = disponibility;
         this.detailsAmenities = detailsAmenities;
+        this.hotel = hotel;
     }
 
     public long getId() {
@@ -76,6 +78,19 @@ public class Room {
 
     public void setDetailsAmenities(String detailsAmenities) {
         this.detailsAmenities = detailsAmenities;
+    }
+
+    public Hotel getHotel() {
+        return hotel;
+    }
+
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
+    }
+
+    @Override
+    public String toString() {
+   return String.valueOf(roomNumber);
     }
 
 }

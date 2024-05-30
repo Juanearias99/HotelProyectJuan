@@ -13,9 +13,8 @@ import java.util.Date;
 public class Booking {
 
     private long id;
-    private User user;
-    private Hotel hotel;
-    private Room room;
+    private User idUser;
+    private Room idRoom;
     private String dateIn;
     private String dateOut;
     private String reservationStatus;
@@ -29,11 +28,10 @@ public class Booking {
         this.id = id;
     }
 
-    public Booking(long id, User user, Hotel hotel, Room room, String dateIn, String dateOut, String reservationStatus, double totalPrice) {
+    public Booking(long id, User idUser, Room idRoom, String dateIn, String dateOut, String reservationStatus, double totalPrice) {
         this.id = id;
-        this.user = user;
-        this.hotel = hotel;
-        this.room = room;
+        this.idUser = idUser;
+        this.idRoom = idRoom;
         this.dateIn = dateIn;
         this.dateOut = dateOut;
         this.reservationStatus = reservationStatus;
@@ -48,28 +46,20 @@ public class Booking {
         this.id = id;
     }
 
-    public User getUser() {
-        return user;
+    public User getIdUser() {
+        return idUser;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setIdUser(User idUser) {
+        this.idUser = idUser;
     }
 
-    public Hotel getHotel() {
-        return hotel;
+    public Room getIdRoom() {
+        return idRoom;
     }
 
-    public void setHotel(Hotel hotel) {
-        this.hotel = hotel;
-    }
-
-    public Room getRoom() {
-        return room;
-    }
-
-    public void setRoom(Room room) {
-        this.room = room;
+    public void setIdRoom(Room idRoom) {
+        this.idRoom = idRoom;
     }
 
     public String getDateIn() {
@@ -104,4 +94,5 @@ public class Booking {
         this.totalPrice = totalPrice;
     }
 
+   
 }

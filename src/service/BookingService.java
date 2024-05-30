@@ -46,8 +46,8 @@ public class BookingService {
         bookingDao.createBooking(booking);
     }
     
-    public void readBooking(long id) throws SQLException {
-        bookingDao.readBooking(id);
+    public Booking readBooking(long id) throws SQLException {
+        return bookingDao.readBooking(id);
     }
     
     public void updateBooking(Booking booking) throws SQLException, IdDuplicateException, DateDuplicateException {

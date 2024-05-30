@@ -19,7 +19,7 @@ import validation.EmailValidation;
 
 /**
  *
- * @author arper
+ * @author lenovo
  */
 public class ViewCrudUser extends javax.swing.JFrame {
 
@@ -396,6 +396,7 @@ public class ViewCrudUser extends javax.swing.JFrame {
         long id = Long.parseLong(txtId.getText());
         User user = new User(id, username, email, password, phoneNumber, rol);
         JOptionPane.showMessageDialog(null, "El usuario se ha modificado");
+        clearFields();
         try {
             try {
                 userService.updateUser(user);

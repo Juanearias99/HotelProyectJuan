@@ -9,6 +9,7 @@ import exception.CodeExistingException;
 import exception.CodeValidationException;
 import validation.CodeValidation;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import model.Hotel;
 
 /**
@@ -36,6 +37,9 @@ public class HotelService {
        return hotelDao.readHotel(code);
     }
     
+    public ArrayList<Hotel> readAllHotel() throws SQLException {
+       return hotelDao.readAllHotel();
+    }
     public void updateHotel(Hotel hotel) throws SQLException, CodeExistingException{
         if(!codeVali.validationCode(hotel.getCode())){
             throw new CodeValidationException();

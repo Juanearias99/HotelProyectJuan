@@ -33,8 +33,8 @@ public class ViewHotelAvailable extends javax.swing.JFrame {
 
     public ViewHotelAvailable(User user) {
         initComponents();
-        txtUsername.setText(user.getUsername());
-        setTitle("Usuario");
+        jLableUsername.setText(user.getUsername());
+        setTitle("Administrador");
         setLocationRelativeTo(null);
         hotelService = new HotelService();
 
@@ -61,7 +61,7 @@ public class ViewHotelAvailable extends javax.swing.JFrame {
             card.add(title, BorderLayout.NORTH);
 
             // Crea un JLabel para el contenido de la tarjeta y añádelo al JPanel
-            JLabel content = new JLabel("Nombre:  " + (i + 1));
+            JLabel content = new JLabel("Nombre:  " );
             card.add(content, BorderLayout.CENTER);
 
             // Crea un JTextField para el campo de texto adicional y añádelo al JPanel
@@ -138,7 +138,7 @@ public class ViewHotelAvailable extends javax.swing.JFrame {
         btnReserve = new javax.swing.JButton();
         btnLogOut = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
-        txtUsername = new javax.swing.JTextField();
+        jLableUsername = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -179,6 +179,9 @@ public class ViewHotelAvailable extends javax.swing.JFrame {
             }
         });
 
+        jLableUsername.setBackground(new java.awt.Color(255, 51, 51));
+        jLableUsername.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -198,8 +201,8 @@ public class ViewHotelAvailable extends javax.swing.JFrame {
                         .addComponent(jLabelUser, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(67, 67, 67)
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLableUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jPanelButtons, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -214,7 +217,7 @@ public class ViewHotelAvailable extends javax.swing.JFrame {
                     .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel1)
-                        .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLableUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(27, 27, 27)
                 .addComponent(jPanelButtons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -252,7 +255,7 @@ public class ViewHotelAvailable extends javax.swing.JFrame {
     private javax.swing.JButton btnReserve;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelUser;
+    private javax.swing.JLabel jLableUsername;
     private javax.swing.JPanel jPanelButtons;
-    private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 }

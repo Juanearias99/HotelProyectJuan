@@ -11,7 +11,7 @@ public class DateValidation {
 
     public boolean validateDate(String date) {
 
-        String regex = "\\d{4}/\\d{2}/\\d{2}";
+        String regex = "\\d{4}-\\d{2}-\\d{2}";
 
         Pattern pattern = Pattern.compile(regex);
 

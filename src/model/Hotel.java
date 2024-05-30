@@ -16,7 +16,6 @@ public class Hotel {
     private String city;
     private int classification;
     private int amenities;
-
     public Hotel(long code) {
         this.code = code;
     }
@@ -78,4 +77,10 @@ public class Hotel {
     public void setAmenities(int amenities) {
         this.amenities = amenities;
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
+    
 }

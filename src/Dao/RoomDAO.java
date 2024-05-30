@@ -17,6 +17,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import model.Booking;
+import model.Hotel;
 import model.Room;
 
 /**
@@ -65,7 +66,7 @@ public class RoomDAO {
             throw new IdDuplicateException();
         }
 
-        String createSQL = "INSERT INTO room(id, roomNumber, typeRoom, priceNight, disponibility, detailsAmenities) Values (?, ?, ?, ?, ?, ?)";
+        String createSQL = "INSERT INTO room(id, roomNumber, typeRoom, priceNight, disponibility, detailsAmenities, id_hotel) Values (?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement statement = MySQLConnection.conectarMySQL().prepareStatement(createSQL)) {
             statement.setLong(1, room.getId());
             statement.setInt(2, room.getRoomNumber());
@@ -73,6 +74,7 @@ public class RoomDAO {
             statement.setDouble(4, room.getPriceNight());
             statement.setString(5, room.getDisponibility());
             statement.setString(6, room.getDetailsAmenities());
+            statement.setLong(7, room.getHotel().getCode());
 
             int rowsAffected = statement.executeUpdate();
             if (rowsAffected > 0) {
@@ -87,7 +89,7 @@ public class RoomDAO {
     }
 
     public Room readRooms(long id) throws SQLException {
-        String readSQL = "SELECT * FROM room WHERE id = ?";
+        String readSQL = "SELECT * FROM room r JOIN hotel h ON r.id_hotel = h.code WHERE r.id = ?";
         try (PreparedStatement statement = MySQLConnection.conectarMySQL().prepareStatement(readSQL)) {
             statement.setLong(1, id);
             ResultSet rs = statement.executeQuery();
@@ -96,7 +98,9 @@ public class RoomDAO {
                 System.out.println(rs.getString("disponibility"));
                 Room room = new Room(rs.getLong("id"), rs.getInt("roomNumber"),
                         rs.getString("typeRoom"), rs.getDouble("priceNight"),
-                        rs.getString("disponibility"), rs.getString("detailsAmenities"));
+                        rs.getString("disponibility"), rs.getString("detailsAmenities"),
+                        new Hotel(rs.getLong("code"), rs.getString("name"), rs.getString("adress"), rs.getString("city"),
+                                rs.getInt("classification"), rs.getInt("Amenities")));
                 return room;
             }
         } catch (SQLException e) {
@@ -105,15 +109,37 @@ public class RoomDAO {
         return null;
     }
 
+    public ArrayList<Room> readAllRooms() throws SQLException {
+        String readSQL = "SELECT * FROM room r JOIN hotel h ON r.id_hotel = h.code";
+        ArrayList<Room> roomLists = new ArrayList<>();
+        try (PreparedStatement statement = MySQLConnection.conectarMySQL().prepareStatement(readSQL)) {
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                System.out.println(rs.getString("typeRoom"));
+                System.out.println(rs.getString("disponibility"));
+                Room room = new Room(rs.getLong("id"), rs.getInt("roomNumber"),
+                        rs.getString("typeRoom"), rs.getDouble("priceNight"),
+                        rs.getString("disponibility"), rs.getString("detailsAmenities"),
+                        new Hotel(rs.getLong("code"), rs.getString("name"), rs.getString("adress"), rs.getString("city"),
+                                rs.getInt("classification"), rs.getInt("Amenities")));
+                roomLists.add(room);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error" + e);
+        }
+        return roomLists;
+    }
+
     public void updateRooms(Room room) throws SQLException {
-        String updateSQL = "UPDATE room SET roomNumber = ?, typeRoom = ?, priceNight = ?, disponibility = ?, detailsAmenities = ? WHERE id = ?;";
+        String updateSQL = "UPDATE room SET roomNumber = ?, typeRoom = ?, priceNight = ?, disponibility = ?, detailsAmenities = ?, id_hotel = ? WHERE id = ?;";
         try (PreparedStatement statement = MySQLConnection.conectarMySQL().prepareStatement(updateSQL)) {
             statement.setInt(1, room.getRoomNumber());
             statement.setString(2, room.getTypeOfRoom());
             statement.setDouble(3, room.getPriceNight());
             statement.setString(4, room.getDisponibility());
             statement.setString(5, room.getDetailsAmenities());
-            statement.setLong(6, room.getId());
+            statement.setLong(6, room.getHotel().getCode());
+            statement.setLong(7, room.getId());
             statement.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Error" + e);

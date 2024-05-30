@@ -10,6 +10,7 @@ import exception.IdValidationException;
 import validation.IdValidation;
 import model.Room;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -34,6 +35,10 @@ public class RoomService {
 
     public Room readRoom(long id) throws SQLException {
         return roomDao.readRooms(id);
+    }
+    
+    public ArrayList<Room> readAllRoom() throws SQLException {
+        return roomDao.readAllRooms();
     }
 
     public void updateRoom(Room room) throws SQLException, IdDuplicateException {

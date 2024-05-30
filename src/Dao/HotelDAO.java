@@ -147,8 +147,12 @@ public class HotelDAO {
             while (rs.next()) {
                 System.out.println(rs.getString("name"));
                 System.out.println(rs.getString("city"));
-                Hotel hotel = new Hotel(rs.getLong("code"), rs.getString("name"),
-                        rs.getString("adress"), rs.getString("city"), rs.getInt("classification"),
+                Hotel hotel = new Hotel(
+                        rs.getLong("code"),
+                        rs.getString("name"),
+                        rs.getString("adress"),
+                        rs.getString("city"),
+                        rs.getInt("classification"),
                         rs.getInt("amenities"));
                 return hotel;
             }
@@ -158,8 +162,31 @@ public class HotelDAO {
         return null;
     }
 
+    public ArrayList<Hotel> readAllHotel() throws SQLException {
+        String readSQL = "SELECT * FROM hotel ";
+        ArrayList<Hotel>hotelLists = new ArrayList<>();
+        try (PreparedStatement statement = MySQLConnection.conectarMySQL().prepareStatement(readSQL)) {
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                System.out.println(rs.getString("name"));
+                System.out.println(rs.getString("city"));
+                Hotel hotel = new Hotel(
+                        rs.getLong("code"),
+                        rs.getString("name"),
+                        rs.getString("adress"),
+                        rs.getString("city"),
+                        rs.getInt("classification"),
+                        rs.getInt("amenities"));
+                hotelLists.add(hotel);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error" + e);
+        }
+        return hotelLists;
+    }
+
     public void updateHotel(Hotel hotel) throws SQLException {
-        String updateSQL = "UPDATE hotel SET name = ?, adress = ?, classification = ?, amenities = ?, city = ? WHERE code = ?;";
+        String updateSQL = "UPDATE hotel SET name = ?, adress = ?, city = ?, classification = ?, amenities = ? WHERE code = ?;";
         try (PreparedStatement statement = MySQLConnection.conectarMySQL().prepareStatement(updateSQL)) {
             statement.setString(1, hotel.getName());
             statement.setString(2, hotel.getAdress());
